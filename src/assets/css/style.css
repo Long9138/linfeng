@@ -1,6 +1,6 @@
 html,body{
     margin: 0 auto;
-    height: 3000px;
+
 }
 .box{
     width: 1162px;
@@ -11,5 +11,6 @@ html,body{
     padding: 0;
     list-style: none;
     text-decoration: none;
+     
 }
 

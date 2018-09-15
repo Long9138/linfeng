@@ -284,6 +284,7 @@ export default {
 .roy_carousel_prev:hover,
 .roy_carousel_next:hover{
   opacity: 0.8;
+  cursor: pointer;
 }
 .roy_carousel_prev {
   left: 0;
@@ -310,6 +311,9 @@ export default {
   background-color: white;
   margin: 0 15px 50px 15px;
 
+}
+.roy_carousel_indicators > div:hover{
+  cursor: pointer;
 }
 </style>
 
