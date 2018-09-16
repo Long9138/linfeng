@@ -1,5 +1,5 @@
 <template>
-    <div id="carousel">
+    <div id="shouyeCarousel">
         <div class="roy_carousel">
             <ul>
                 <li>

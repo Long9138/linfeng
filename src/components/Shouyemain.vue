@@ -1,5 +1,5 @@
 <template>
-    <div id="Shouyemain">
+    <div id="shouyeMain">
         <!-- 轮播下面form表单 -->
         <div id="form_box">
             <div class="box">
@@ -169,23 +169,43 @@
 
 
             <!-- 首页报价 -->
-            <div id="baojia">
-                <Baojia />
+            <div id="shouyeBaojia">
+                <shouyeBaojia />
                 
             </div>
-           
         </div>
         
+        <!-- 设计师 -->
+        <div id="shouyeShejishi">
+            <shouyeShejishi />
+        </div>
+        
+        <!-- 预约 -->
+        <div class="">
+            <div class="box">
+             <a href="http://plt.zoosnet.net/lr/chatpre.aspx?id=plt32705416&lng=cn&r=&rf1=&rf2=&p=http%3A//www.sylfzs.cn/&cid=1536031399537653561658&sid=a1ddedd6612540b59fb971de969ca208" class="advantage">
+            <img src="../assets/imgs/Shouyemain/20180828153343267816.jpg" alt="">
+                </a>
+            </div>
+        </div>
 
+        <!-- 攻略 -->
+        <div id="shouyegonglue">
+            <shouyeGonglue />
+        </div>
     </div>
 </template>
 
 <script>
-    import Baojia from "@/components/Baojia"
+    import shouyeBaojia from "@/components/shouyeBaojia"
+    import shouyeShejishi from "@/components/shouyeShejishi"
+    import shouyeGonglue from "@/components/shouyeGonglue"
     export default {
-        name: "Shouyemain",
+        name: "shouyeMain",
         components:{
-            Baojia
+            shouyeBaojia,
+            shouyeShejishi,
+            shouyeGonglue
             
         },
         data() {
@@ -349,7 +369,7 @@
     #shouye_quanan_box {
 
         margin-bottom: 30px;
-
+        
         #shouye_quanan_logo {
             margin-bottom: 30px;
         }
@@ -664,6 +684,13 @@
     #baojia{
         margin-top: 40px;
         padding-bottom: 20px;
+    }
+
+    /* 预约 */
+    .advantage{
+        margin-top: 35px;
+        display: block;
+        float: left;
     }
     
     

@@ -1,5 +1,5 @@
 <template>
-    <div id="baojia1">
+    <div id="shouyeBaojia">
         <div class="box">
             <div class="baojia_header">
                 <p>算算我家装修多少钱？</p>
@@ -159,7 +159,7 @@
 
 <script>
     export default {
-        name: 'baojia',
+        name: 'shouyeBaojia',
         data() {
             return {
 

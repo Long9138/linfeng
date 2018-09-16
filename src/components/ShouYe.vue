@@ -1,20 +1,20 @@
 <template>
-    <div id="Shouye">
+    <div id="shouye">
         <Navinput />
         <Navbar />
-        <Carousel />
-        <Shouyemain />
+        <shouyeCarousel />
+        <shouyeMain />
     </div>
 </template>
 
 <script>
     import Navbar from '@/components/Navbar'
     import Navinput from '@/components/Navinput'
-    import Carousel from '@/components/Carousel'
-    import Shouyemain from '@/components/Shouyemain'
+    import shouyeCarousel from '@/components/shouyeCarousel'
+    import shouyeMain from '@/components/shouyeMain'
 
     export default {
-        name:"Shouye",
+        name:"shouye",
         data() {
             return {
 
@@ -22,8 +22,8 @@
         }, components: {
             Navinput,
             Navbar,
-            Carousel,
-            Shouyemain
+            shouyeCarousel,
+            shouyeMain
         },
     }
 </script>

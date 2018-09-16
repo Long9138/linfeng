@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Shouye from '@/components/Shouye'
+import shouye from '@/components/shouye'
 
 Vue.use(Router)
 
@@ -9,7 +9,7 @@ export default new Router({
     {
       path: '/',
       name: 'shouye',
-      component: Shouye
+      component: shouye
     }
   ]
 })
