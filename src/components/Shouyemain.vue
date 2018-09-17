@@ -1,5 +1,6 @@
 <template>
     <div id="shouyeMain">
+         <shouyeCarousel />
         <!-- 轮播下面form表单 -->
         <div id="form_box">
             <div class="box">
@@ -26,7 +27,6 @@
             </div>
 
         </div>
-
 
         <div class="box">
             <!-- 首页全案整装 -->
@@ -197,501 +197,560 @@
 </template>
 
 <script>
-    import shouyeBaojia from "@/components/shouyeBaojia"
-    import shouyeShejishi from "@/components/shouyeShejishi"
-    import shouyeGonglue from "@/components/shouyeGonglue"
-    export default {
-        name: "shouyeMain",
-        components:{
-            shouyeBaojia,
-            shouyeShejishi,
-            shouyeGonglue
-            
-        },
-        data() {
-            return {
-                item: [
-                    ['现代简约', '北欧', '新中式', '中式', '美式', '欧式', '地中海', '工业风', '港式', '田园', '混搭', '日式', '新古典', '其他'],
-                    ['一居', '二居', '三居', '四居', '五居', '复式', '别墅', '办公空间', 'LOFT'],
-                    ['70㎡以下', '71㎡ - 90㎡', '91㎡ - 120㎡', '121㎡ - 150㎡', '151㎡ - 300㎡', '300㎡以上'],
-                    ['餐厅', '卧室', '卫生间', '厨房', '阳台', '书房', '儿童房', '休闲区', '衣帽间', '门厅', '过廊', '户型图']
-                ],
-                item2: []
-            };
-        },
-        methods: {
-            quananClick1(e) {
-                $('.shouye_quanan_main_content_img1').stop().animate({ zIndex: 1, opacity: 1 }, 300).siblings().stop().animate({ zIndex: 0, opacity: 0 }, 300).end().children('div').addClass('shouye_quanan_main_header_img_div')
-            },
-            quananClick2(e) {
-                $('.shouye_quanan_main_content_img2').stop().animate({ zIndex: 1, opacity: 1 }, 300).siblings().stop().animate({ zIndex: 0, opacity: 0 }, 300)
-                $('.shouye_quanan_main_content_img2').children('div').addClass('shouye_quanan_main_header_img_div')
-
-            },
-            quananClick3(e) {
-                $('.shouye_quanan_main_content_img3').stop().animate({ zIndex: 1, opacity: 1 }, 300).siblings().stop().animate({ zIndex: 0, opacity: 0 }, 300).end().children('div').addClass('shouye_quanan_main_header_img_div')
-            },
-
-             
-
-            
-        },
-        beforeMount() { },
-        mounted() {
-            $(".form").hover(
-                function (e) {
-                    $(this)
-                        .css({ boxShadow: "0 0 20px gray" })
-                        .find("p")
-                        .css({ color: "red" });
-                },
-                function (e) {
-                    $(this)
-                        .css({ boxShadow: "none" })
-                        .find("p")
-                        .css({ color: "" });
-                }
-            );
-
-            $('.shouye_quanan_main_header_img').click(function (e) {
-                $(this).children('div').addClass('shouye_quanan_main_header_img_div').end().siblings().children('div').removeClass('shouye_quanan_main_header_img_div')
-
-            })
-
-            var that = this;
-            this.item2 = this.item[0];
-            $('#shouye_anli_header_content_nav1 a:first-child').css({ color: "red" })
-            $('#shouye_anli_header_content_nav1 a').on('mouseover', function () {
-
-                var i = $(this).attr('index');
-                // alert(i);
-                $(this).css({ color: "red" }).siblings().css({ color: "" })
-                that.item2 = that.item[i];
-            })
-
-            // 案例主体阴影、文字效果
-            $('.alzt_boxs a').on('mouseover',function(e){
-                // console.log($(this))
-               $(this).children('span').css({
-                transform:"scale(1)",
-                opacity:"1"
-                }).end().find('h3').css({
-                marginTop: '0px',
-                opacity:"1"
-                }).siblings('span').css({
-                marginTop: '0px',
-                opacity:"1"
-                }).siblings('p').css({
-                marginTop: '0px',
-                opacity:"1"
-                })
-            })
-            $('.alzt_boxs a').on('mouseleave',function(e){
-                // console.log($(this))
-               $(this).children('span').css({
-                transform:"scale(0)",
-                opacity:"0"
-                }).end().find('h3').css({
-                marginTop: '-50px',
-                opacity:"0"
-                }).siblings('span').css({
-                marginTop: '-50px',
-                opacity:"0"
-                }).siblings('p').css({
-                marginTop: '150px',
-                opacity:"0"
-                })
-            })
-
-
-
-        }
+import shouyeCarousel from "@/components/shouyeCarousel";
+import shouyeBaojia from "@/components/shouyeBaojia";
+import shouyeShejishi from "@/components/shouyeShejishi";
+import shouyeGonglue from "@/components/shouyeGonglue";
+export default {
+  name: "shouyeMain",
+  components: {
+    shouyeCarousel,
+    shouyeBaojia,
+    shouyeShejishi,
+    shouyeGonglue
+  },
+  data() {
+    return {
+      item: [
+        [
+          "现代简约",
+          "北欧",
+          "新中式",
+          "中式",
+          "美式",
+          "欧式",
+          "地中海",
+          "工业风",
+          "港式",
+          "田园",
+          "混搭",
+          "日式",
+          "新古典",
+          "其他"
+        ],
+        [
+          "一居",
+          "二居",
+          "三居",
+          "四居",
+          "五居",
+          "复式",
+          "别墅",
+          "办公空间",
+          "LOFT"
+        ],
+        [
+          "70㎡以下",
+          "71㎡ - 90㎡",
+          "91㎡ - 120㎡",
+          "121㎡ - 150㎡",
+          "151㎡ - 300㎡",
+          "300㎡以上"
+        ],
+        [
+          "餐厅",
+          "卧室",
+          "卫生间",
+          "厨房",
+          "阳台",
+          "书房",
+          "儿童房",
+          "休闲区",
+          "衣帽间",
+          "门厅",
+          "过廊",
+          "户型图"
+        ]
+      ],
+      item2: []
     };
+  },
+  methods: {
+    quananClick1(e) {
+      $(".shouye_quanan_main_content_img1")
+        .stop()
+        .animate({ zIndex: 1, opacity: 1 }, 300)
+        .siblings()
+        .stop()
+        .animate({ zIndex: 0, opacity: 0 }, 300)
+        .end()
+        .children("div")
+        .addClass("shouye_quanan_main_header_img_div");
+    },
+    quananClick2(e) {
+      $(".shouye_quanan_main_content_img2")
+        .stop()
+        .animate({ zIndex: 1, opacity: 1 }, 300)
+        .siblings()
+        .stop()
+        .animate({ zIndex: 0, opacity: 0 }, 300);
+      $(".shouye_quanan_main_content_img2")
+        .children("div")
+        .addClass("shouye_quanan_main_header_img_div");
+    },
+    quananClick3(e) {
+      $(".shouye_quanan_main_content_img3")
+        .stop()
+        .animate({ zIndex: 1, opacity: 1 }, 300)
+        .siblings()
+        .stop()
+        .animate({ zIndex: 0, opacity: 0 }, 300)
+        .end()
+        .children("div")
+        .addClass("shouye_quanan_main_header_img_div");
+    }
+  },
+  beforeMount() {},
+  mounted() {
+    $(".form").hover(
+      function(e) {
+        $(this)
+          .css({ boxShadow: "0 0 20px gray" })
+          .find("p")
+          .css({ color: "red" });
+      },
+      function(e) {
+        $(this)
+          .css({ boxShadow: "none" })
+          .find("p")
+          .css({ color: "" });
+      }
+    );
+
+    $(".shouye_quanan_main_header_img").click(function(e) {
+      $(this)
+        .children("div")
+        .addClass("shouye_quanan_main_header_img_div")
+        .end()
+        .siblings()
+        .children("div")
+        .removeClass("shouye_quanan_main_header_img_div");
+    });
+
+    var that = this;
+    this.item2 = this.item[0];
+    $("#shouye_anli_header_content_nav1 a:first-child").css({ color: "red" });
+    $("#shouye_anli_header_content_nav1 a").on("mouseover", function() {
+      var i = $(this).attr("index");
+      // alert(i);
+      $(this)
+        .css({ color: "red" })
+        .siblings()
+        .css({ color: "" });
+      that.item2 = that.item[i];
+    });
+
+    // 案例主体阴影、文字效果
+    $(".alzt_boxs a").on("mouseover", function(e) {
+      // console.log($(this))
+      $(this)
+        .children("span")
+        .css({
+          transform: "scale(1)",
+          opacity: "1"
+        })
+        .end()
+        .find("h3")
+        .css({
+          marginTop: "0px",
+          opacity: "1"
+        })
+        .siblings("span")
+        .css({
+          marginTop: "0px",
+          opacity: "1"
+        })
+        .siblings("p")
+        .css({
+          marginTop: "0px",
+          opacity: "1"
+        });
+    });
+    $(".alzt_boxs a").on("mouseleave", function(e) {
+      // console.log($(this))
+      $(this)
+        .children("span")
+        .css({
+          transform: "scale(0)",
+          opacity: "0"
+        })
+        .end()
+        .find("h3")
+        .css({
+          marginTop: "-50px",
+          opacity: "0"
+        })
+        .siblings("span")
+        .css({
+          marginTop: "-50px",
+          opacity: "0"
+        })
+        .siblings("p")
+        .css({
+          marginTop: "150px",
+          opacity: "0"
+        });
+    });
+  }
+};
 </script>
 
 <style lang="less">
-    /* 轮播下面form表单 */
-    #form_box {
-        height: 134px;
+/* 轮播下面form表单 */
+#form_box {
+  height: 134px;
 
-        .form_box_ul {
-            margin-left: -26px;
-        }
+  .form_box_ul {
+    margin-left: -26px;
+  }
 
-        .form {
-            float: left;
-            margin: 17px 0 0 26px;
-            padding: 25px 140px 25px 30px;
-            box-sizing: border-box;
-        }
+  .form {
+    float: left;
+    margin: 17px 0 0 26px;
+    padding: 25px 140px 25px 30px;
+    box-sizing: border-box;
+  }
 
-        .form1 {
-            background: url("../assets/imgs/Shouyemain/icon01.png") no-repeat 86% center;
-        }
+  .form1 {
+    background: url("../assets/imgs/Shouyemain/icon01.png") no-repeat 86% center;
+  }
 
-        .form1:hover {
-            background-image: url("../assets/imgs/Shouyemain/icon01s.png");
-        }
+  .form1:hover {
+    background-image: url("../assets/imgs/Shouyemain/icon01s.png");
+  }
 
-        .form2 {
-            background: url("../assets/imgs/Shouyemain/icon02.png") no-repeat 86% center;
-        }
+  .form2 {
+    background: url("../assets/imgs/Shouyemain/icon02.png") no-repeat 86% center;
+  }
 
-        .form2:hover {
-            background-image: url("../assets/imgs/Shouyemain/icon02s.png");
-        }
+  .form2:hover {
+    background-image: url("../assets/imgs/Shouyemain/icon02s.png");
+  }
 
-        .form3 {
-            background: url("../assets/imgs/Shouyemain/icon03.png") no-repeat 86% center;
-        }
+  .form3 {
+    background: url("../assets/imgs/Shouyemain/icon03.png") no-repeat 86% center;
+  }
 
-        .form3:hover {
-            background-image: url("../assets/imgs/Shouyemain/icon03s.png");
-        }
+  .form3:hover {
+    background-image: url("../assets/imgs/Shouyemain/icon03s.png");
+  }
 
-        .form p {
-            width: 200px;
-            height: 27px;
-            margin-bottom: 5px;
-            font-size: 21px;
-        }
+  .form p {
+    width: 200px;
+    height: 27px;
+    margin-bottom: 5px;
+    font-size: 21px;
+  }
 
-        .form span {
-            width: 200px;
-            height: 20px;
-            font-size: 15px;
-            display: block;
-        }
-    }
+  .form span {
+    width: 200px;
+    height: 20px;
+    font-size: 15px;
+    display: block;
+  }
+}
 
+/* 首页全案整装 */
+#shouye_quanan_box {
+  margin-bottom: 30px;
 
-    /* 首页全案整装 */
-    #shouye_quanan_box {
+  #shouye_quanan_logo {
+    margin-bottom: 30px;
+  }
 
-        margin-bottom: 30px;
-        
-        #shouye_quanan_logo {
-            margin-bottom: 30px;
-        }
+  #shouye_quanan_logo > p {
+    padding: 30px 0 6px 0;
+    margin-bottom: 6px;
+    text-align: center;
+    font-size: 30px;
+    color: #323232;
+    background: url("../assets/imgs/Shouyemain/area-title-line.png") no-repeat
+      center bottom;
+  }
 
-        #shouye_quanan_logo>p {
-            padding: 30px 0 6px 0;
-            margin-bottom: 6px;
-            text-align: center;
-            font-size: 30px;
-            color: #323232;
-            background: url("../assets/imgs/Shouyemain/area-title-line.png") no-repeat center bottom;
-        }
+  #shouye_quanan_logo > span {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+    color: #646464;
+  }
 
-        #shouye_quanan_logo>span {
-            display: block;
-            text-align: center;
-            font-size: 20px;
-            color: #646464;
-        }
+  /* 全案整装头部 */
 
+  #shouye_quanan_main_header > ul {
+    margin-left: -25px;
+    position: relative;
+    height: 90px;
+  }
 
-        /* 全案整装头部 */
+  .shouye_quanan_main_header_img {
+    width: 370px;
+    height: 90px;
+    background-size: cover;
+    float: left;
+    margin-left: 25px;
+    cursor: pointer;
 
-        #shouye_quanan_main_header>ul {
-            margin-left: -25px;
-            position: relative;
-            height: 90px;
-        }
-
-        .shouye_quanan_main_header_img {
-            width: 370px;
-            height: 90px;
-            background-size: cover;
-            float: left;
-            margin-left: 25px;
-            cursor: pointer;
-
-            .shouye_quanan_main_header_img_div {
-                width: 370px;
-                height: 90px;
-                opacity: .8;
-                position: absolute;
-                background: rgba(0, 0, 0, 0.6);
-                background: url("../assets/imgs/Shouyemain/gradual-bg.jpg") repeat-y center;
-                /* background-size: cover;
+    .shouye_quanan_main_header_img_div {
+      width: 370px;
+      height: 90px;
+      opacity: 0.8;
+      position: absolute;
+      background: rgba(0, 0, 0, 0.6);
+      background: url("../assets/imgs/Shouyemain/gradual-bg.jpg") repeat-y
+        center;
+      /* background-size: cover;
             background-size: 100% 100%; */
-            }
+    }
+  }
 
-        }
+  .shouye_quanan_main_header_img1 {
+    background: url("../assets/imgs/Shouyemain/entire01.jpg") repeat-y center;
+  }
 
-        .shouye_quanan_main_header_img1 {
-            background: url("../assets/imgs/Shouyemain/entire01.jpg") repeat-y center;
+  .shouye_quanan_main_header_img2 {
+    background: url("../assets/imgs/Shouyemain/entire02.jpg") repeat-y center;
+  }
 
-        }
+  .shouye_quanan_main_header_img3 {
+    background: url("../assets/imgs/Shouyemain/entire03.jpg") repeat-y center;
+  }
 
-        .shouye_quanan_main_header_img2 {
-            background: url("../assets/imgs/Shouyemain/entire02.jpg") repeat-y center;
-        }
+  .shouye_quanan_main_header_img > p {
+    width: 370px;
+    height: 90px;
+    position: absolute;
+    line-height: 90px;
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+    z-index: 1;
+  }
 
-        .shouye_quanan_main_header_img3 {
-            background: url("../assets/imgs/Shouyemain/entire03.jpg") repeat-y center;
-        }
+  /* 全案整装内容 */
+  #shouye_quanan_main_content {
+    margin-top: 40px;
+    height: 437px;
 
-        .shouye_quanan_main_header_img>p {
-            width: 370px;
-            height: 90px;
-            position: absolute;
-            line-height: 90px;
-            text-align: center;
-            color: #fff;
-            font-size: 22px;
-            z-index: 1;
-        }
+    a {
+      position: relative;
 
+      img {
+        position: absolute;
+      }
 
-        /* 全案整装内容 */
-        #shouye_quanan_main_content {
+      .shouye_quanan_main_content_img1 {
+        z-index: 1;
+      }
+    }
+  }
+}
 
-            margin-top: 40px;
-            height: 437px;
+/* 首页装修案例 */
+#shouye_anli_box {
+  margin-top: 40px;
+  height: 551px;
 
-            a {
-                position: relative;
+  #shouye_anli_header {
+    margin-bottom: 30px;
 
-                img {
-                    position: absolute;
-                }
+    #shouye_anli_header_left {
+      float: left;
+      padding-right: 40px;
+      border-right: 1px solid #646464;
 
-                .shouye_quanan_main_content_img1 {
-                    z-index: 1;
-                }
-            }
+      p {
+        font-size: 30px;
+        color: #323232;
+      }
 
-        }
-
-
-
-
+      span {
+        font-size: 15px;
+        color: #646464;
+      }
     }
 
+    #shouye_anli_header_content {
+      margin-left: 40px;
+      margin-top: 5px;
+      width: 602px;
+      float: left;
 
-    /* 首页装修案例 */
-    #shouye_anli_box {
-        margin-top: 40px;
-        height: 551px;
+      #shouye_anli_header_content_nav1 {
+        padding: 0 5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        border-bottom: 1px solid #646464;
 
-        #shouye_anli_header {
-            margin-bottom: 30px;
+        a {
+          margin-left: 25px;
+          font-size: 16px;
+          font-weight: bold;
+          color: #646464;
+          line-height: 26px;
+        }
+      }
 
-            #shouye_anli_header_left {
-                float: left;
-                padding-right: 40px;
-                border-right: 1px solid #646464;
+      .shouye_anli_header_content_nav2 {
+        padding: 0 5px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
 
-                p {
-                    font-size: 30px;
-                    color: #323232;
-                }
-
-                span {
-                    font-size: 15px;
-                    color: #646464;
-                }
-            }
-
-
-            #shouye_anli_header_content {
-                margin-left: 40px;
-                margin-top: 5px;
-                width: 602px;
-                float: left;
-
-                #shouye_anli_header_content_nav1 {
-                    padding: 0 5px;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    white-space: nowrap;
-                    border-bottom: 1px solid #646464;
-
-                    a {
-                        margin-left: 25px;
-                        font-size: 16px;
-                        font-weight: bold;
-                        color: #646464;
-                        line-height: 26px;
-                    }
-
-
-                }
-
-                .shouye_anli_header_content_nav2 {
-                    padding: 0 5px;
-                    text-overflow: ellipsis;
-                    overflow: hidden;
-                    white-space: nowrap;
-
-                    a {
-                        margin-left: 20px;
-                        font-size: 13px;
-                        color: #646464;
-                        line-height: 26px;
-                    }
-
-                    a:hover {
-                        color: red;
-                    }
-                }
-
-
-            }
-
-            #shouye_anli_header_right {
-                display: block;
-                float: right;
-                width: 116px;
-                height: 38px;
-                font-weight: normal;
-                font-size: 18px;
-                color: #fff;
-                text-align: center;
-                line-height: 38px;
-                margin-top: 8px;
-                background: url("../assets/imgs/Shouyemain/more-sj.png") no-repeat 80% center, url("../assets/imgs/Shouyemain/gradual-bg.jpg") repeat-y center;
-                background-size: 7px 16px, cover;
-            }
-
-            #shouye_anli_header_right:hover {
-                letter-spacing: 2px;
-                background: url("../assets/imgs/Shouyemain/more-sj.png") no-repeat 82% center, url("../assets/imgs/Shouyemain/gradual-bg.jpg") repeat-y center;
-                transition: 0.2s all;
-            }
-
+        a {
+          margin-left: 20px;
+          font-size: 13px;
+          color: #646464;
+          line-height: 26px;
         }
 
-        /* 案例主体 */
-        .shouye_anli_main {
-            margin-top: 30px;
-            float: left;
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
-
-            a {
-                position: relative;
-                display: block;
-            }
-
-            .shouye_anli_main_show {
-                display: inline-block;
-                opacity: 0;
-                position: absolute;
-                left: 0;
-                top: 0;
-                width:100%;
-                height: 100%;
-                background: rgba(0, 0, 0, 0.5);
-                transform: scale(0);
-                transition: 0.2s all;
-                
-            }
-           
-
-            div {
-
-                /* 案例主体隐藏文本 */
-                .shouye_anli_main_text {
-                    position: absolute;
-                    width: 86%;
-                    top: 50%;
-                    left: 50%;
-                    transform: translate(-50%, -50%);
-
-                    h3 {
-                        margin-top: -50px;
-                        opacity: 0;
-                        font-size: 25px;
-                        font-weight: normal;
-                        color: #fff;
-                        transition: 0.2s all;
-                    }
-
-                    span {
-                        margin-top: -50px;
-                        opacity: 0;
-                        display: inline-block;
-                        padding-bottom: 6px;
-                        margin-bottom: 10px;
-                        font-size: 15px;
-                        border-bottom: 1px solid #fff;
-                        color: #fff;
-                        transition: 0.2s all;
-                    }
-
-                    p {
-                        margin-top: 150px;
-                        height: 78px;
-                        opacity: 0;
-                        font-size: 15px;
-                        line-height: 26px;
-                        color: #fff;
-                        overflow: hidden;
-                        transition: 0.2s all;
-                    }
-                }
-
-
-                /* 案例左内容 */
-                .shouye_anli_main_left {
-                    width: 577px;
-                    height: 461px;
-                    position: relative;
-                    float: left;
-                }
-
-
-                /* 案例右内容 */
-                .shouye_anli_main_right {
-                    float: right;
-                }
-
-                .shouye_anli_main_right_top {
-                    position: relative;
-                    margin-left: 8px;
-                    margin-bottom: 12px;
-                    width: 572px;
-                    height: 246px;
-                    /* overflow: hidden; */
-                }
-
-
-                .shouye_anli_main_right_bom {
-                    float: left;
-                    position: relative;
-                    margin-left: 8px;
-                    width: 282px;
-                    height: 203px;
-                    /* overflow: hidden; */
-                }
-
-
-
-            }
-
-
-
+        a:hover {
+          color: red;
         }
+      }
     }
 
-    /* 首页报价 */
-    #baojia{
-        margin-top: 40px;
-        padding-bottom: 20px;
+    #shouye_anli_header_right {
+      display: block;
+      float: right;
+      width: 116px;
+      height: 38px;
+      font-weight: normal;
+      font-size: 18px;
+      color: #fff;
+      text-align: center;
+      line-height: 38px;
+      margin-top: 8px;
+      background: url("../assets/imgs/Shouyemain/more-sj.png") no-repeat 80%
+          center,
+        url("../assets/imgs/Shouyemain/gradual-bg.jpg") repeat-y center;
+      background-size: 7px 16px, cover;
     }
 
-    /* 预约 */
-    .advantage{
-        margin-top: 35px;
-        display: block;
+    #shouye_anli_header_right:hover {
+      letter-spacing: 2px;
+      background: url("../assets/imgs/Shouyemain/more-sj.png") no-repeat 82%
+          center,
+        url("../assets/imgs/Shouyemain/gradual-bg.jpg") repeat-y center;
+      transition: 0.2s all;
+    }
+  }
+
+  /* 案例主体 */
+  .shouye_anli_main {
+    margin-top: 30px;
+    float: left;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    a {
+      position: relative;
+      display: block;
+    }
+
+    .shouye_anli_main_show {
+      display: inline-block;
+      opacity: 0;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      transform: scale(0);
+      transition: 0.2s all;
+    }
+
+    div {
+      /* 案例主体隐藏文本 */
+      .shouye_anli_main_text {
+        position: absolute;
+        width: 86%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        h3 {
+          margin-top: -50px;
+          opacity: 0;
+          font-size: 25px;
+          font-weight: normal;
+          color: #fff;
+          transition: 0.2s all;
+        }
+
+        span {
+          margin-top: -50px;
+          opacity: 0;
+          display: inline-block;
+          padding-bottom: 6px;
+          margin-bottom: 10px;
+          font-size: 15px;
+          border-bottom: 1px solid #fff;
+          color: #fff;
+          transition: 0.2s all;
+        }
+
+        p {
+          margin-top: 150px;
+          height: 78px;
+          opacity: 0;
+          font-size: 15px;
+          line-height: 26px;
+          color: #fff;
+          overflow: hidden;
+          transition: 0.2s all;
+        }
+      }
+
+      /* 案例左内容 */
+      .shouye_anli_main_left {
+        width: 577px;
+        height: 461px;
+        position: relative;
         float: left;
+      }
+
+      /* 案例右内容 */
+      .shouye_anli_main_right {
+        float: right;
+      }
+
+      .shouye_anli_main_right_top {
+        position: relative;
+        margin-left: 8px;
+        margin-bottom: 12px;
+        width: 572px;
+        height: 246px;
+        /* overflow: hidden; */
+      }
+
+      .shouye_anli_main_right_bom {
+        float: left;
+        position: relative;
+        margin-left: 8px;
+        width: 282px;
+        height: 203px;
+        /* overflow: hidden; */
+      }
     }
-    
-    
+  }
+}
+
+/* 首页报价 */
+#baojia {
+  margin-top: 40px;
+  padding-bottom: 20px;
+}
+
+/* 预约 */
+.advantage {
+  margin: 35px auto;
+  display: block;
+  float: left;
+}
 </style>

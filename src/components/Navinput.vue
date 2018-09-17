@@ -98,6 +98,7 @@
 
   #Navbar_box{
     background:white;
+    float: left;
   }
 
   #Navinput_herader_box {

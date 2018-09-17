@@ -1,5 +1,10 @@
 <template>
     <div id="Navbar">
+        <!-- 导航搜索栏 -->
+        <div id="Navinput">
+            <Navinput />
+        </div>
+        <!-- 导航栏 -->
         <div id="Navbar_box">
             <div class="box">
                 <section>
@@ -9,13 +14,12 @@
                 <div id="Navbar_right">
                     <ul id="Navbar_right_content">
                         <li class="Navbar_right_content_li">
-                            <a href="">首页
+                            <a href="#/">首页
                                 <span></span>
                             </a>
-
                         </li>
                         <li class="Navbar_right_content_li">
-                            <a href="">全案整装
+                            <a href="#/quanan">全案整装
                                 <span></span>
                             </a>
 
@@ -252,75 +256,130 @@
 </template>
 
 <script>
+    import Navinput from '@/components/Navinput'
     export default {
         name: "Navbar",
+        components: {
+            Navinput
+        },
         data() {
-            return {
-
-            }
+            return {};
         },
-        methods: {
-
-        },
-        beforeMount() {
-
-
-        },
+        methods: {},
+        beforeMount() { },
         mounted() {
-            $(".Navbar_right_content_li>a").hover(function (e) {
-                $(this).children('span').stop().animate({ height: "6px" }, 300);
-            }, function (e) {
-                $(this).children('span').stop().animate({ height: "0" }, 300);
+            // 导航搜索栏
+
+
+            // 导航栏
+            // $(".Navbar_right_content_li>a").hover(
+            //     function (e) {
+            //         $(this)
+            //             .children("span")
+            //             .stop()
+            //             .animate({ height: "6px" }, 300);
+            //     },
+            //     function (e) {
+            //         $(this)
+            //             .children("span")
+            //             .stop()
+            //             .animate({ height: "0" }, 300);
+            //     }
+            // );
+
+            $('.Navbar_right_content_li a').on('click', function (e) {
+                $(this).children('span').css('height', '6px').parents('.Navbar_right_content_li').siblings().children('a').children('span').css('height', '0')
+
+                $('#Navinput').css('display', 'none')
             })
 
-            $('.Navbar_right_content_li_Dropdown_box').hover(function (e) {
-                $(this).children('.Navbar_second_nav').css({
-                    display: "block"
-                })
-            }, function (e) {
-                $(this).children('.Navbar_second_nav').css({
-                    display: "none"
-                })
-            })
-
-            $('.Navbar_second_nav_ul2 img').hover(function (e) {
-
-                $(e.target).next().children().css({
-                    color: "red"
-                })
-            }, function (e) {
-                $(e.target).next().children().css({
-                    color: "#323232"
-                })
+            $('.Navbar_right_content_li a').eq(0).on('click', function () {
+                $('#Navinput').css('display', 'block')
+                $(this).attr('href', '/')
             })
 
 
-            $('.Navbar_second_nav_ul3_img').hover(function (e) {
 
-                $('.Navbar_second_nav_ul3_img').stop().animate({}, function () {
-                    $(e.target).css({ 'transform': 'rotateY(180deg)' });
-                })
-            }, function (e) {
-                $('.Navbar_second_nav_ul3_img').stop().animate({}, function () {
-                    $(e.target).css({ 'transform': 'rotateY(0deg)' });
-                })
-            })
+            $(".Navbar_right_content_li_Dropdown_box").hover(
+                function (e) {
+                    $(this)
+                        .children(".Navbar_second_nav")
+                        .css({
+                            display: "block"
+                        });
+                },
+                function (e) {
+                    $(this)
+                        .children(".Navbar_second_nav")
+                        .css({
+                            display: "none"
+                        });
+                }
+            );
 
-            $('.Navbar_second_nav_box a').hover(function (e) {
-                $(this).find('.Navbar_second_nav3_imgBox').css({
-                    background: '#F1544D'
-                }).end().find('p').css({ color: 'red' })
-            }, function (e) {
-                $(this).find('.Navbar_second_nav3_imgBox').css({
-                    background: '#969696'
-                }).end().find('p').css({ color: '' })
-            })
+            $(".Navbar_second_nav_ul2 img").hover(
+                function (e) {
+                    $(e.target)
+                        .next()
+                        .children()
+                        .css({
+                            color: "red"
+                        });
+                },
+                function (e) {
+                    $(e.target)
+                        .next()
+                        .children()
+                        .css({
+                            color: "#323232"
+                        });
+                }
+            );
 
+            $(".Navbar_second_nav_ul3_img").hover(
+                function (e) {
+                    $(".Navbar_second_nav_ul3_img")
+                        .stop()
+                        .animate({}, function () {
+                            $(e.target).css({ transform: "rotateY(180deg)" });
+                        });
+                },
+                function (e) {
+                    $(".Navbar_second_nav_ul3_img")
+                        .stop()
+                        .animate({}, function () {
+                            $(e.target).css({ transform: "rotateY(0deg)" });
+                        });
+                }
+            );
+
+            $(".Navbar_second_nav_box a").hover(
+                function (e) {
+                    $(this)
+                        .find(".Navbar_second_nav3_imgBox")
+                        .css({
+                            background: "#F1544D"
+                        })
+                        .end()
+                        .find("p")
+                        .css({ color: "red" });
+                },
+                function (e) {
+                    $(this)
+                        .find(".Navbar_second_nav3_imgBox")
+                        .css({
+                            background: "#969696"
+                        })
+                        .end()
+                        .find("p")
+                        .css({ color: "" });
+                }
+            )
 
             // 导航栏固定顶部
             var oTop = $("#Navbar_box").offset().top;
             //获取导航栏的高度，此高度用于保证内容的平滑过渡
-            var martop = $('#Navbar_box').outerHeight();
+            var martop = $("#Navbar_box").outerHeight();
 
             var sTop = 0;
             // 监听页面的滚动
@@ -330,20 +389,17 @@
                 // 当导航栏到达屏幕顶端
                 if (sTop >= oTop) {
                     // 修改导航栏position属性，使之固定在屏幕顶端
-                    $("#Navbar_box").css({ "position": "fixed", "top": "0" });
+                    $("#Navbar_box").css({ position: "fixed", top: "0" });
                     // 修改内容的margin-top值，保证平滑过渡
                     $("body").css({ "margin-top": martop });
                 } else {
                     // 当导航栏脱离屏幕顶端时，回复原来的属性
-                    $("#Navbar_box").css({ "position": "static" });
+                    $("#Navbar_box").css({ position: "static" });
                     $("body").css({ "margin-top": "0" });
                 }
             });
-
-
-
         }
-    }
+    };
 </script>
 
 <style scoped>
@@ -396,7 +452,6 @@
         width: 70px;
         height: 49px;
         text-align: center;
-
     }
 
     .Navbar_right_content_li>a>span {
@@ -409,10 +464,8 @@
     }
 
     .Navbar_right_content_li:first-child>a>span {
-        height: 6px !important;
+        height: 6px;
     }
-
-
 
     /* 导航栏——隐藏框 */
     .Navbar_second_nav {
@@ -451,7 +504,6 @@
         margin-right: 30px;
         margin-top: 8px;
         float: left;
-
     }
 
     .Navbar_second_nav_ul1 p {
@@ -495,7 +547,6 @@
         width: 60px;
         height: 20px;
         font-size: 15px;
-
     }
 
     .Navbar_second_nav_ul2>li:last-child {
@@ -550,7 +601,6 @@
         margin-left: 36px;
     }
 
-
     /* 品质保障——隐藏框 */
     .Navbar_second_nav3>div {
         width: 1162px !important;
@@ -589,4 +639,5 @@
         font-size: 13px;
         color: #646464;
     }
+   
 </style>

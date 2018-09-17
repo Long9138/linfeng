@@ -1,17 +1,19 @@
 <template>
     <div id="shouye">
-        <Navinput />
         <Navbar />
-        <shouyeCarousel />
-        <shouyeMain />
+        <Aside />
+        <div>
+            <router-view/>
+        </div>
+
+        <Footer />
     </div>
 </template>
 
 <script>
     import Navbar from '@/components/Navbar'
-    import Navinput from '@/components/Navinput'
-    import shouyeCarousel from '@/components/shouyeCarousel'
-    import shouyeMain from '@/components/shouyeMain'
+    import Footer from '@/components/Footer'
+    import Aside from '@/components/Aside'
 
     export default {
         name:"shouye",
@@ -19,12 +21,12 @@
             return {
 
             }
-        }, components: {
-            Navinput,
-            Navbar,
-            shouyeCarousel,
-            shouyeMain
-        },
+        }, components: {     
+            Navbar,      
+            Footer,
+            Aside
+        }
+        
     }
 </script>
 

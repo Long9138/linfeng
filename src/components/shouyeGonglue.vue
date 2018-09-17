@@ -11,8 +11,10 @@
                         <li class="strategy-li" v-for="item in data">
                             <div class="strategy-phase">
                                 <div class="phase-title  phase-title1">
-                                    <div></div>
-                                    <p></p>
+                                    
+                                    <img :src="item.beijing" alt="">
+                                    <img src="../assets/imgs/Shouyemain/gradual-bg.jpg" alt="">
+                                    <div>{{item.zhuti}}</div>
                                 </div>
                                 <div class="strategy-phase-con">
                                     <ul class="phase1">
@@ -90,6 +92,9 @@
             return {
                 data: [
                     {
+
+                        zhuti: '准备阶段',
+                        beijing: require("../assets/imgs/Shouyemain/strategy01.jpg"),
                         zbimg1: require("../assets/imgs/Shouyemain/20180808113327630996.jpg"),
                         zbbt1: "什么装修风格好",
                         zbbtjj1:
@@ -107,6 +112,8 @@
                     },
 
                     {
+                        zhuti: '施工阶段',
+                        beijing: require("../assets/imgs/Shouyemain/strategy02.jpg"),
                         zbimg1: require("../assets/imgs/Shouyemain/20180627133838142819.jpg"),
                         zbbt1: "房屋改造装修水电的全步骤",
                         zbbtjj1:
@@ -124,6 +131,8 @@
                     },
 
                     {
+                        zhuti: '验收阶段',
+                        beijing: require("../assets/imgs/Shouyemain/strategy03.jpg"),
                         zbimg1: require("../assets/imgs/Shouyemain/20180627135618638137.png"),
                         zbbt1: "最全的 客厅挂画风水讲究及挂画风水禁忌",
                         zbbtjj1:
@@ -143,7 +152,15 @@
             };
         },
         methods: {},
-        mounted() { }
+        mounted() {
+            $('.strategy-li').hover(function (e) {
+              
+                $(this).find('.phase-title').children('img').eq(1).css('opacity',0.6)
+            }, function (e) {
+              
+                $(this).find('.phase-title').children('img').eq(1).css('opacity',0)
+            })
+        }
     };
 </script>
 
@@ -154,10 +171,11 @@
 
     .strategy {
         padding-bottom: 40px;
-        float: left;
+
+    }
+
+    .strategy>div {
         margin: 0 auto;
-
-
     }
 
     .area-title {
@@ -200,7 +218,7 @@
         position: absolute;
         left: 50%;
         margin-left: -184px;
-        width: 368px;
+        width: 100%;
         box-shadow: 0 0 20px #b1b1b1;
         transition: 0.2s all;
     }
@@ -217,10 +235,6 @@
         background-size: cover;
     }
 
-    .phase-title1 {
-        background-image: url("../assets/imgs/Shouyemain/strategy01.jpg");
-    }
-
     .phase-title>div {
         position: absolute;
         left: 0;
@@ -232,7 +246,7 @@
         opacity: 0.6;
     }
 
-    .phase-title p {
+    .phase-title>img {
         position: absolute;
         left: 0;
         top: 0;
@@ -241,6 +255,10 @@
         font-size: 25px;
         color: #323232;
         text-align: center;
+    }
+    .phase-title>img:nth-of-type(2){
+        opacity: 0;
+        height: 100%;
     }
 
     .strategy-phase-con {
