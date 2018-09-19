@@ -268,25 +268,6 @@
         methods: {},
         beforeMount() { },
         mounted() {
-            // 导航搜索栏
-
-
-            // 导航栏
-            // $(".Navbar_right_content_li>a").hover(
-            //     function (e) {
-            //         $(this)
-            //             .children("span")
-            //             .stop()
-            //             .animate({ height: "6px" }, 300);
-            //     },
-            //     function (e) {
-            //         $(this)
-            //             .children("span")
-            //             .stop()
-            //             .animate({ height: "0" }, 300);
-            //     }
-            // );
-
             $('.Navbar_right_content_li a').on('click', function (e) {
                 $(this).children('span').css('height', '6px').parents('.Navbar_right_content_li').siblings().children('a').children('span').css('height', '0')
 
@@ -297,9 +278,11 @@
                 $('#Navinput').css('display', 'block')
                 $(this).attr('href', '/')
             })
-
-
-
+            // $('.Navbar_right_content_li a').eq(1).on('click', function () {
+            //     $('#Navinput').css('display', 'block')
+                
+            // })
+            
             $(".Navbar_right_content_li_Dropdown_box").hover(
                 function (e) {
                     $(this)
@@ -378,22 +361,22 @@
 
             // 导航栏固定顶部
             var oTop = $("#Navbar_box").offset().top;
-            //获取导航栏的高度，此高度用于保证内容的平滑过渡
+           
             var martop = $("#Navbar_box").outerHeight();
 
             var sTop = 0;
             // 监听页面的滚动
             $(window).scroll(function () {
-                // 获取页面向上滚动的距离
+               
                 sTop = $(this).scrollTop();
-                // 当导航栏到达屏幕顶端
+                
                 if (sTop >= oTop) {
-                    // 修改导航栏position属性，使之固定在屏幕顶端
+                    
                     $("#Navbar_box").css({ position: "fixed", top: "0" });
-                    // 修改内容的margin-top值，保证平滑过渡
+                    
                     $("body").css({ "margin-top": martop });
                 } else {
-                    // 当导航栏脱离屏幕顶端时，回复原来的属性
+                    
                     $("#Navbar_box").css({ position: "static" });
                     $("body").css({ "margin-top": "0" });
                 }

@@ -153,6 +153,12 @@ export default {
 
       royCarouselLoop();
 
+      $('.roy_carousel ul').hover(function(){
+        clearTimeout(royCarouselTimer);
+      },function(){
+        royCarouselLoop();
+      })
+
       //左右按钮点击
       $(".roy_carousel_prev")
         .click(function() {
@@ -239,7 +245,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less">
 #carousel {
   width: 100%;
   height: 500px;
