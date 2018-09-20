@@ -275,7 +275,7 @@
         },
         methods: {
          
-    
+             
         },
         mounted() {
             $(".zz-tap-ul")
@@ -308,7 +308,6 @@
                 }
             );
 
-               this.$root.reload() 
         }
     };
 </script>

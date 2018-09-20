@@ -25,7 +25,7 @@
 
                         </li>
                         <li class="Navbar_right_content_li Navbar_right_content_li_Dropdown_box">
-                            <a href="">装修案例
+                            <a href="#/anli">装修案例
                                 <span></span>
 
                             </a>
@@ -278,10 +278,7 @@
                 $('#Navinput').css('display', 'block')
                 $(this).attr('href', '/')
             })
-            // $('.Navbar_right_content_li a').eq(1).on('click', function () {
-            //     $('#Navinput').css('display', 'block')
-                
-            // })
+
             
             $(".Navbar_right_content_li_Dropdown_box").hover(
                 function (e) {

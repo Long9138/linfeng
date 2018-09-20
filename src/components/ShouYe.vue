@@ -3,7 +3,7 @@
         <Navbar />
         <Aside />
         <div>
-            <router-view v-if="isRouterAlive" />
+            <router-view/>
         </div>
 
         <Footer />
@@ -19,7 +19,7 @@ export default {
   name: "shouye",
   data() {
     return {
-      isRouterAlive: true
+      
     };
   },
   components: {
@@ -28,10 +28,7 @@ export default {
     Aside
   },
   methods: {
-    reload() {
-      this.isRouterAlive = false;
-      this.$nextTick(() => (this.isRouterAlive = true));
-    }
+   
   }
 };
 </script>

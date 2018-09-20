@@ -5,15 +5,29 @@
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  components:{
-    
-  }
-}
+  name: "app"
+};
 </script>
 
 <style>
-
+html,
+body {
+  margin: 0 auto;
+}
+.box {
+  width: 1162px;
+  margin: 0 auto;
+}
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  border: none;
+}
+ p:hover {
+        color: '' !important
+    }
 </style>
+
