@@ -4,7 +4,7 @@ import shouye from '@/components/shouye'
 import shouyeMain from '@/components/shouyeMain'
 import quanan from '@/components/quanan'
 import anli from '@/components/anli'
-
+import aaa from '@/components/aaa'
 Vue.use(Router)
 
 export default new Router({
@@ -28,6 +28,11 @@ export default new Router({
           path: '/anli',
           name: 'anli',
           component: anli
+        },
+        {
+          path: '/aaa',
+          name: 'aaa',
+          component: aaa
         }
       ]
     }

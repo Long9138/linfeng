@@ -117,10 +117,14 @@
                     <a href="#">全案整装实景图</a>
                 </div>
             </div>
-            
-            
-            <div>
-                <qazzCarousel />
+
+            <!-- 安全轮播效果 -->
+            <div class="quanan_lbxg">
+                <el-carousel :interval="2000" arrow="always">
+                    <el-carousel-item v-for="img in lbxg">
+                        <img :src="img" alt="" >
+                    </el-carousel-item>
+                </el-carousel>
             </div>
         </div>
 
@@ -221,16 +225,10 @@
 </template>
 
 <script>
-    import qazzCarousel from "@/components/qazzCarousel";
     export default {
         name: "quanan",
-        components:{
-            qazzCarousel
-        },
-        
         data() {
             return {
-                
                 data: [
                     {
                         img: require("../assets/imgs/Quanan/20180624091056692739.jpg"),
@@ -270,13 +268,12 @@
                         jingyan: "12",
                         alzp: "5"
                     }
-                ]
+                ],
+                lbxg: [require("../assets/imgs/Carousel/20180627171843422201.jpg"),
+                require("../assets/imgs/Carousel/20180627171809139990.jpg"), require("../assets/imgs/Carousel/20180627171910188494.jpg")]
             };
         },
-        methods: {
-         
-             
-        },
+        methods: {},
         mounted() {
             $(".zz-tap-ul")
                 .find("li")
@@ -291,8 +288,7 @@
                         .hide();
                 });
 
-
-             // 设计师
+            // 设计师
             $(".designer-list li").hover(
                 function (e) {
                     $(this)
@@ -308,6 +304,10 @@
                 }
             );
 
+
+            $('.quanan_lbxg .el-carousel__arrow').appendTo($('.quanan_lbxg'))
+
+            
         }
     };
 </script>
@@ -484,6 +484,32 @@
         margin-right: 0;
     }
 
+    .quanan_lbxg{
+        position: relative;
+    }
+    
+    .quanan_lbxg .el-carousel__container{
+        height: 435px;
+        width: 1160px;
+    }
+    .quanan_lbxg .el-carousel__arrow{
+        width: 39px;
+        height: 79px;
+    }
+    .quanan_lbxg .el-carousel__arrow i{
+        display: none;
+    }
+    .quanan_lbxg .el-carousel__arrow--left{
+        background: url('../assets/imgs/Carousel/left2.png') no-repeat center;
+        left: -50px;
+    }
+    .quanan_lbxg .el-carousel__arrow--right{
+        background: url('../assets/imgs/Carousel/right2.png') no-repeat center;
+        right: -50px;
+    }  
+    .quanan_lbxg .el-carousel__indicators{
+        display: none;
+    }
 
     /* 设计师 */
     .area-title3 {
@@ -525,8 +551,6 @@
 
     .designer-pic {
         position: relative;
-        /* width: 224px;
-height: 313px; */
         overflow: hidden;
     }
 

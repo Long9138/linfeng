@@ -10,11 +10,12 @@ import ElementUI from 'element-ui';
 import $ from 'jquery'
 
 import 'element-ui/lib/theme-chalk/index.css';
+import VueLazyload from 'vue-lazyload'
 
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);
-
+Vue.use(VueLazyload)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

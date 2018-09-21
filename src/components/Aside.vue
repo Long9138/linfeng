@@ -99,24 +99,31 @@
             // 监听页面滚动
             window.onwheel = function(e){
                 var ohtml = document.documentElement;
-                if (ohtml.scrollTop >= 380) {
+                if (ohtml.scrollTop == 0 || ohtml.scrollTop < 380) {
+                    $('.side').css({
+                        position:'absolute',
+                        top:'55%'
+                    })
+                    $('.side-fh').css('display','none')
+                }
+
+                else if(ohtml.scrollTop >= 380) {
                     $('.side').css({
                         position:'fixed',
                         top:'30%'
                     })
                     $('.side-fh').css('display','block')
-
+                    
                 }
-                else {
-                    $('.side').css({
-                        position:''
-                    })
-                    $('.side-fh').css('display','none')
-                }
+                
             }
 
-            $('.hide').click(function(){
+           $('.hide').click(function(){
                 $('.foot-fixed').css('display','none')
+                $('.side').css({
+                        position:'absolute',
+                        top:'55%'
+                    })
             })
         }
     }
