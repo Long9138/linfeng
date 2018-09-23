@@ -99,7 +99,7 @@
                         </li>
 
                         <li class="Navbar_right_content_li Navbar_right_content_li_Dropdown_box">
-                            <a href="#/aaa">设计团队
+                            <a href="#/tuandui">设计团队
                                 <span></span>
 
                             </a>
@@ -281,9 +281,11 @@ export default {
       $("#Navinput").css("display", "none");
     });
 
-    $(".Navbar_right_content_li a").eq(0).on("click", function(e) {
-      $("#Navinput").css("display", "block");
-    });
+    $(".Navbar_right_content_li a")
+      .eq(0)
+      .on("click", function(e) {
+        $("#Navinput").css("display", "block");
+      });
 
     $(".Navbar_right_content_li_Dropdown_box").hover(
       function(e) {
@@ -374,10 +376,10 @@ export default {
       if (sTop >= oTop) {
         $("#Navbar_box").css({ position: "fixed", top: "0" });
 
-        $("body").css({ "margin-top": martop });
+        // $("body").css({ "margin-top": martop });
       } else {
-        $("#Navbar_box").css({ position: "static" });
-        $("body").css({ "margin-top": "0" });
+        $("#Navbar_box").css({ position: "relative" });
+        // $("body").css({ "margin-top": "0" });
       }
     });
   }

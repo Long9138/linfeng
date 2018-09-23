@@ -7,7 +7,9 @@
         <el-carousel-item v-for="img in sylbimg">
           <img :src="img" alt="">
         </el-carousel-item>
+        <div class="banner-line"></div>
       </el-carousel>
+      
     </div>
 
 
@@ -221,11 +223,11 @@
     data() {
       return {
         sylbimg: [
-                require("../assets/imgs/Carousel/20180828120525118676.jpg"),
-                require("../assets/imgs/Carousel/20180823114409969293.jpg"),
-                require("../assets/imgs/Carousel/20180629090504296353.jpg"),
-                require("../assets/imgs/Carousel/20180629090657643136.jpg")
-              ],
+          require("../assets/imgs/Carousel/20180828120525118676.jpg"),
+          require("../assets/imgs/Carousel/20180823114409969293.jpg"),
+          require("../assets/imgs/Carousel/20180629090504296353.jpg"),
+          require("../assets/imgs/Carousel/20180629090657643136.jpg")
+        ],
         item: [
           [
             "现代简约",
@@ -412,42 +414,65 @@
 
 <style lang="less">
   .shouye_nav {
-        height: 77px;
-    }
+    height: 77px;
+  }
 
   /* 首页轮播 */
-  .syCarousel .el-carousel__arrow i{
-        display: none;
-    }
+  .syCarousel .el-carousel__arrow i {
+    display: none;
+  }
 
-    .syCarousel .el-carousel__container{
-        height: 500px;
-        width: 100%;
-        /* margin: 0 auto; */
-    }
+  .syCarousel .el-carousel__container {
+    height: 500px;
+    width: 100%;
+    /* margin: 0 auto; */
+  }
 
-    .syCarousel .el-carousel__arrow{
-        width: 26px;
-        height: 94px;
-        opacity: 0.4;
-        border-radius: 0;
-    }
+  .syCarousel .el-carousel__arrow {
+    width: 26px;
+    height: 94px;
+    opacity: 0.4;
+    border-radius: 0;
+  }
 
-    .syCarousel .el-carousel__arrow:hover{
-      opacity: 0.8;
-    }
+  .syCarousel .el-carousel__arrow:hover {
+    opacity: 0.8;
+  }
 
-    .syCarousel .el-carousel__arrow--left{
-        background: url('../assets/imgs/Carousel/left3.png') no-repeat center;
-    }
-    .syCarousel .el-carousel__arrow--right{
-        background: url('../assets/imgs/Carousel/right3.png') no-repeat center;
-    }
+  .syCarousel .el-carousel__arrow--left {
+    background: url('../assets/imgs/Carousel/left3.png') no-repeat center;
+  }
 
-    .syCarousel .el-carousel__item img{
-      width: 100%;
-      height: 100%;
-    }
+  .syCarousel .el-carousel__arrow--right {
+    background: url('../assets/imgs/Carousel/right3.png') no-repeat center;
+  }
+
+  .syCarousel .el-carousel__item img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .syCarousel .el-carousel__button {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 10px;
+    margin-bottom: 10px;
+  }
+
+  .syCarousel .el-carousel__button:hover {
+    background-color: red;
+  }
+
+  .syCarousel .banner-line {
+    height: 8px;
+    width: 100%;
+    background: url("../assets/imgs/Aside/gradual-bg.jpg") repeat-y center;
+    background-size: cover;
+    position: absolute;
+    bottom: -0;
+    z-index: 5;
+  }
 
   /* 轮播下面form表单 */
   #form_box {
