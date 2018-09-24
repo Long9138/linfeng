@@ -121,8 +121,8 @@
             <!-- 安全轮播效果 -->
             <div class="quanan_lbxg">
                 <el-carousel :interval="2000" arrow="always">
-                    <el-carousel-item v-for="img in lbxg">
-                        <img :src="img" alt="" >
+                    <el-carousel-item v-for="(item,index) in lbxg" :key="index">
+                        <img :src="item" alt="" >
                     </el-carousel-item>
                 </el-carousel>
             </div>
@@ -137,7 +137,7 @@
             </div>
             <div class="designer-list-box">
                 <ul class="designer-list designer-list-second">
-                    <li v-for="item in data">
+                    <li v-for="(item,index) in data" :key="index">
                         <a href="" target="_blank">
                             <div class="designer-pic">
                                 <img :src="item.img" alt="">

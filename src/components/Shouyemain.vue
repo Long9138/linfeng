@@ -1,11 +1,11 @@
 <template>
   <div id="shouyeMain">
-    <div class="shouye_nav"></div>
+    <div class="sy_top"></div>
     <!-- 首页轮播 -->
     <div class="syCarousel">
       <el-carousel :interval="2000" arrow="always">
-        <el-carousel-item v-for="img in sylbimg">
-          <img :src="img" alt="">
+        <el-carousel-item v-for="(item,index) in sylbimg" :key="index">
+          <img :src="item" alt="">
         </el-carousel-item>
         <div class="banner-line"></div>
       </el-carousel>
@@ -96,7 +96,7 @@
 
             </p>
             <p class="shouye_anli_header_content_nav2">
-              <a v-for='ite in item2' href="">{{ite}}</a>
+              <a v-for='(ite,index) in item2' href="" :key="index">{{ite}}</a>
             </p>
           </div>
 
@@ -413,7 +413,7 @@
 </script>
 
 <style lang="less">
-  .shouye_nav {
+  .sy_top {
     height: 77px;
   }
 

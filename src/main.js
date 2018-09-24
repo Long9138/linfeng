@@ -5,7 +5,7 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui';
 // 引入公共css
-// import './assets/css/style.css'
+import './assets/css/style.css'
 // 引入jQuery
 import $ from 'jquery'
 

@@ -5,6 +5,7 @@ import shouyeMain from '@/components/shouyeMain'
 import quanan from '@/components/quanan'
 import anli from '@/components/anli'
 import tuandui from '@/components/tuandui'
+import pinzhi from '@/components/pinzhi'
 Vue.use(Router)
 
 export default new Router({
@@ -33,6 +34,14 @@ export default new Router({
           path: '/tuandui',
           name: 'tuandui',
           component: tuandui
+        },
+        {
+          path: '/pinzhi',
+          name: 'pinzhi',
+          component: pinzhi,
+          children:[
+            
+          ]
         }
       ]
     }

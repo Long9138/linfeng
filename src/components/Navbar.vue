@@ -159,7 +159,7 @@
 
                         </li>
                         <li class="Navbar_right_content_li Navbar_right_content_li_Dropdown_box">
-                            <a href="">品质保障
+                            <a href="#/pinzhi">品质保障
                                 <span></span>
 
                             </a>
