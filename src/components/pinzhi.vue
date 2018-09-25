@@ -11,7 +11,7 @@
                         >
                         <a href="#">品质保障</a>
                         >
-                        <a href="#">徽派工艺</a>
+                        <a href="#" class="pzh_dw_a">徽派工艺</a>
                     </p>
                 </div>
             </div>
@@ -27,15 +27,21 @@
             </div>
         </div>
 
-        <!--  -->
+        <!-- 导航 -->
         <div class="pz-nav box">
             <ul>
-                <li><a href="#">徽派工艺</a></li>
+                <li><a href="#/pinzhiGY" class="on">徽派工艺</a></li>
                 <li><a href="#">自有团队</a></li>
                 <li><a href="#">全程跟踪服务</a></li>
                 <li><a href="#">大牌主材</a></li>
                 <li><a href="#">超大体验馆</a></li>
             </ul>
+        </div>
+
+
+        <!-- 主体内容 -->
+        <div>
+            <router-view/>
         </div>
     </div>
 </template>
@@ -49,10 +55,19 @@
         },
         methods: {},
         mounted() {
+               
             $('.pz-nav').find('ul').on('click', 'a', function (e) {
                 var index = $(e.target).parent().index();
-                $('.pzh_ib li:eq(' + index + ')').children('img').css('display','')
-                // console.log(index)
+                $(this).css({ color: '#fff', background: 'orangered' }).addClass('on').parent().siblings('li').children('a').css({ color: 'black', background: '#fff' }).removeClass('on')
+                $('.pzh_ib li:eq(' + index + ')').css('display', 'block').siblings('li').css('display', 'none');
+
+                $('.pzh_dw_a').text($('.pz-nav li:eq(' + index + ')').find('a').text())
+            })
+        
+            $('.pz-nav a').hover(function(e){
+                $(this).css({ color: '#fff', background: 'orangered' })
+            },function(e){           
+                $(this).css({ color: 'black', background: '#fff' })
             })
         }
     }
@@ -94,6 +109,11 @@
     .pzh_ib li {
         position: absolute;
         top: 0;
+        display: none;
+    }
+
+    .pzh_ib li:first-child {
+        display: block;
     }
 
     .pzh_ib img {
@@ -122,5 +142,14 @@
     .pz-nav a {
         display: block;
         font-size: 18px;
+    }
+
+    .pz-nav a:hover {
+        color: #fff;
+        background: orangered;
+    }
+    .pz-nav .on{
+        color: #fff;
+        background: orangered;
     }
 </style>

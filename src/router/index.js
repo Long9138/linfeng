@@ -6,6 +6,8 @@ import quanan from '@/components/quanan'
 import anli from '@/components/anli'
 import tuandui from '@/components/tuandui'
 import pinzhi from '@/components/pinzhi'
+
+import pinzhiGY from '@/components/pinzhiGY'
 Vue.use(Router)
 
 export default new Router({
@@ -40,7 +42,11 @@ export default new Router({
           name: 'pinzhi',
           component: pinzhi,
           children:[
-            
+            {
+              path: '/pinzhi',
+              name: 'pinzhiGY',
+              component:pinzhiGY
+            }
           ]
         }
       ]
